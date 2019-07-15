@@ -6,7 +6,7 @@ const ArticleEdit = (props: Record<string, any>) => (
         <SimpleForm>
             <DisabledInput source="id" />
             <TextInput source="title" />
-            <TextInput source="teaser" options={{ multiLine: true }} />
+            <TextInput source="teaser" />
             <LongTextInput source="body" />
             <DateInput label="Publication date" source="published_at" />
         </SimpleForm>

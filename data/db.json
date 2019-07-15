@@ -1,1 +1,39 @@
-{}
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Od kuda po svuda?",
+      "teaser": "Pogledajte od kuda idu",
+      "body": "Idu od tu.",
+      "published_at": "2019-07-15T11:12:58.139Z"
+    },
+    {
+      "id": 2,
+      "title": "Nece moci bilivat",
+      "teaser": "Oš uzet šta",
+      "body": "Dogodilo se...",
+      "published_at": "2019-07-15T11:12:58.139Z"
+    },
+    {
+      "id": 3,
+      "title": "Ilić kaže: \"Ponvaljam, što se događa\"",
+      "teaser": "Ponvaljam, što se događa",
+      "body": "Nije mogao bilivat što se dogodilo",
+      "published_at": "2019-07-15T11:12:58.139Z"
+    },
+    {
+      "id": 4,
+      "title": "Nova godina",
+      "teaser": "Što ce jos poci po zlu?",
+      "body": "Dalo bi se pricat",
+      "published_at": "2019-07-15T11:12:58.139Z"
+    },
+    {
+      "title": "Test",
+      "teaser": "Testing 1,2",
+      "body": "Testing this shit",
+      "published_at": "2019-07-24",
+      "id": 5
+    }
+  ]
+}
