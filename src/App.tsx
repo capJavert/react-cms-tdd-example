@@ -1,26 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Admin, Resource } from 'react-admin'
+import { LibraryBooks as ArticleIcon } from '@material-ui/icons'
+import restProvider from 'ra-data-simple-rest'
+
+import { ArticleList, ArticleEdit, ArticleCreate } from './screens'
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Admin dataProvider={restProvider('http://localhost:4444')}>
+            <Resource name="posts" list={ArticleList} edit={ArticleEdit} create={ArticleCreate} icon={ArticleIcon} />
+        </Admin>
+    )
 }
 
-export default App;
+export default App
