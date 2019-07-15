@@ -25,6 +25,6 @@ jobs:
           script: "npm run test"
         - stage: "E2E testing"
           script: "npm run fake:rest &"
-          script: "npm run e2e --app \"npm start\""
+          script: "npm run e2e -- --app \"npm start\""
         - stage: "Build"
           script: "npm run build"
