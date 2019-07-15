@@ -171,15 +171,7 @@
                 "nonEmpty": "after-props"
             }
         ],
-        "react/prop-types": [
-            "error",
-            {
-                "ignore": [
-                    "children",
-                    "navigation"
-                ]
-            }
-        ]
+        "react/prop-types": "off"
     },
     "plugins": [
         "react",

@@ -1,5 +1,7 @@
 # React CMS TDD example
 
+[![Build Status](https://travis-ci.org/capJavert/react-cms-tdd-example.svg?branch=master)](https://travis-ci.org/capJavert/react-cms-tdd-example)
+
 Example of tests setup for general CMS with react-admin, jest and testcafe
 
 ## Setup
@@ -27,6 +29,12 @@ npm test
 ```
 
 Launches the test runner in the interactive watch mode.
+
+```
+npm run e2e
+```
+
+Executes e2e tests with testcafe.
 
 ```
 npm build

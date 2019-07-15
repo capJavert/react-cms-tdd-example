@@ -1,0 +1,4 @@
+{
+    "browsers": "chrome",
+    "src": "**/*.e2e.(js|jsx|ts|tsx)"
+}
