@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "10.13.0"
+dist: trusty
+sudo: required
+env:
+    - DB=mongodb SUITE=all
+addons:
+    chrome: stable
+
+install: npm install
+script:
+    - npm run test
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+    - sleep 3
+    - fluxbox > /dev/null 2>&1 &
+    - npm run build
+    - npm run serve >/dev/null 2>&1 &
+    - wait-on http://localhost:4444
+    - wait-on http://localhost:5000
+    - npm run e2e
