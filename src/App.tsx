@@ -7,7 +7,7 @@ import { ArticleList, ArticleEdit, ArticleCreate } from './screens'
 
 const App: React.SFC = () => {
     return (
-        <Admin dataProvider={restProvider('http://localhost:4444')}>
+        <Admin dataProvider={restProvider(process.env.API_PATH)}>
             <Resource name="articles" list={ArticleList} edit={ArticleEdit} create={ArticleCreate} icon={ArticleIcon} />
         </Admin>
     )
