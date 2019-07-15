@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Datagrid, TextField, DateField, EditButton } from 'react-admin'
 
-const ArticleList = (props: Record<string, any>) => (
+const ArticleList: React.SFC = props => (
     <List {...props}>
         <Datagrid>
             <TextField source="id" />

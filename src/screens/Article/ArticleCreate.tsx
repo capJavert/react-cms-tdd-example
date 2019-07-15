@@ -1,7 +1,7 @@
 import React from 'react'
 import { Create, SimpleForm, TextInput, LongTextInput, DateInput } from 'react-admin'
 
-const ArticleEdit = (props: Record<string, any>) => (
+const ArticleEdit: React.SFC = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="title" />
