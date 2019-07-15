@@ -20,7 +20,7 @@
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js",
-        "e2e": "cd e2e && testcafe",
+        "e2e": "cd e2e && APP_PATH=http://localhost:5000 testcafe",
         "serve": "node scripts/serve.js",
         "fake:rest": "node scripts/serve.js --no-public"
     },
