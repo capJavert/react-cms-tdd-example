@@ -13,6 +13,8 @@ process.on('unhandledRejection', err => {
 });
 
 // Ensure environment variables are read.
+const { join } = require('path')
+require('dotenv').config({ path: join(__dirname, '../.env.test') })
 require('../config/env');
 
 

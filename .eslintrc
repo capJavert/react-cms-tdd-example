@@ -16,6 +16,7 @@
         "fetch": true,
         "it": true,
         "expect": true,
+        "cExpect": true,
         "assert": true
     },
     "extends": [
