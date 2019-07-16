@@ -8,12 +8,13 @@ const { API_PORT } = process.env
 const dataProvider = restProvider(`http://localhost:${API_PORT}`)
 
 describe('resources.articles.api', () => {
-    const server = jsonServer.create()
+    let serverListener
 
     beforeAll(
         () =>
             new Promise((resolve, reject) => {
                 try {
+                    const server = jsonServer.create()
                     const router = jsonServer.router(db)
                     const middlewares = jsonServer.defaults({
                         port: API_PORT,
@@ -23,9 +24,7 @@ describe('resources.articles.api', () => {
                     server.use(middlewares)
                     server.use(router)
 
-                    server.listen(API_PORT, () => {
-                        resolve()
-                    })
+                    serverListener = server.listen(API_PORT, resolve)
                 } catch (e) {
                     console.error(e)
                     reject()
@@ -119,7 +118,15 @@ describe('resources.articles.api', () => {
         await expect(dataProvider(GET_ONE, 'articles', { id: 1 })).rejects.toThrow('Not Found')
     })
 
-    afterAll(() => {
-        server.close()
-    })
+    afterAll(
+        () =>
+            new Promise((resolve, reject) => {
+                try {
+                    serverListener.close(resolve)
+                } catch (e) {
+                    console.error(e)
+                    reject()
+                }
+            })
+    )
 })
