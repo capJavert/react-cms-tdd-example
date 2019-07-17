@@ -1,5 +1,5 @@
 import React from 'react'
-import { Datagrid } from 'react-admin'
+import { List, Datagrid } from 'react-admin'
 import { shallow } from 'enzyme'
 
 import ArticleList from './ArticleList'
@@ -21,5 +21,6 @@ const props: ControllerProps = {
 
 test('renders without crashing', () => {
     const wrapper = shallow(<ArticleList {...props} />)
+    cExpect(wrapper.find(List)).to.have.lengthOf(1)
     cExpect(wrapper.find(Datagrid)).to.have.lengthOf(1)
 })
