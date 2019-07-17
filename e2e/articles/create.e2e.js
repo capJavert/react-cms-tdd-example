@@ -13,9 +13,9 @@ fixture`Articles/Create`
     .before(async () => {
         stopFakeApi = await startFakeApi(API_PORT)
     })
-    .after(() => {
+    .after(async () => {
         if (typeof stopFakeApi === 'function') {
-            stopFakeApi()
+            await stopFakeApi()
         }
     })
 

@@ -1,37 +1,16 @@
-import jsonServer from 'json-server'
 import { GET_LIST, GET_ONE, CREATE, UPDATE, DELETE } from 'react-admin'
 import restProvider from 'ra-data-json-server'
-
-import db from '../../../data/db'
+import { startFakeApi } from '../../helpers'
 
 const { API_PORT } = process.env
 const dataProvider = restProvider(`http://localhost:${API_PORT}`)
 
 describe('resources.articles.api', () => {
-    let serverListener
+    let stopFakeApi
 
-    beforeAll(
-        () =>
-            new Promise((resolve, reject) => {
-                try {
-                    const server = jsonServer.create()
-                    const router = jsonServer.router(db)
-                    const middlewares = jsonServer.defaults({
-                        port: API_PORT,
-                        quiet: true
-                    })
-
-                    server.use(middlewares)
-                    server.use(router)
-
-                    serverListener = server.listen(API_PORT, resolve)
-                } catch (e) {
-                    console.error(e)
-                    reject()
-                }
-            }),
-        10000
-    )
+    beforeAll(async () => {
+        stopFakeApi = await startFakeApi(API_PORT)
+    }, 10000)
 
     it('should return items and total', async () => {
         expect.assertions(2)
@@ -118,15 +97,9 @@ describe('resources.articles.api', () => {
         await expect(dataProvider(GET_ONE, 'articles', { id: 1 })).rejects.toThrow('Not Found')
     })
 
-    afterAll(
-        () =>
-            new Promise((resolve, reject) => {
-                try {
-                    serverListener.close(resolve)
-                } catch (e) {
-                    console.error(e)
-                    reject()
-                }
-            })
-    )
+    afterAll(async () => {
+        if (typeof stopFakeApi === 'function') {
+            await stopFakeApi()
+        }
+    })
 })
