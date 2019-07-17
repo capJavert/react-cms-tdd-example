@@ -3,6 +3,7 @@
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
+const isTest = process.argv.indexOf('--test') > -1
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
@@ -44,7 +45,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 // Generate configuration
-const config = configFactory('production');
+const config = configFactory('production', isTest);
 
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
@@ -132,7 +133,7 @@ function build(previousFileSizes) {
     console.log();
   }
 
-  console.log('Creating an optimized production build...');
+  console.log('Creating an optimized production build...', isTest ? '(with test attributes)' : '' );
 
   const compiler = webpack(config);
   return new Promise((resolve, reject) => {
