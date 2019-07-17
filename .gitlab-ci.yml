@@ -1,0 +1,22 @@
+image: amio/node-chrome
+stages:
+    - test
+
+before_script:
+    - node -v
+    - npm install
+
+test:
+    stage: test
+    script:
+        - CI=true npm run test
+        - npm run build -- --test
+        - npm run serve -- --no-json-server >/dev/null 2>&1 &
+        - npx wait-on http://localhost:5000
+        - CI=true npm run e2e -- chrome:headless
+    artifacts:
+        paths:
+            - .tests/screenshots/
+        expire_in: 24hrs
+    tags:
+        - frontend
