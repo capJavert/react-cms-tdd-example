@@ -17,5 +17,8 @@ const { join } = require('path');
 require('dotenv').config({ path: join(__dirname, '../.env.test') });
 require('../config/env');
 const { execSync } = require('child_process');
+let argv = process.argv.slice(2);
 
-execSync('cd e2e && testcafe', { stdio: 'inherit' });
+const testScript = `cd e2e && testcafe ${argv.join(' ')}`
+console .log('>', testScript)
+execSync(testScript, { stdio: 'inherit' });

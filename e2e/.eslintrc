@@ -4,6 +4,7 @@
         "fixture": true
     },
     "rules": {
-        "no-debugger": "off"
+        "no-debugger": "off",
+        "no-console": "off"
     }
 }

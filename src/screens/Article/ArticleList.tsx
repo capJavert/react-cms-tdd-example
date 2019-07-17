@@ -7,11 +7,9 @@ const ArticleList: React.SFC<React.PropsWithChildren<{ basePath: string }>> = pr
     return (
         <List {...props}>
             <Datagrid>
-                <TextField source="id" />
-                <TextField source="title" />
-                <DateField source="published_at" />
-                <TextField source="average_note" />
-                <TextField source="views" />
+                <TextField data-test="field-id" source="id" />
+                <TextField data-test="field-title" source="title" />
+                <DateField data-test="field-published_at" source="published_at" />
                 <EditButton basePath={basePath} />
             </Datagrid>
         </List>

@@ -1,12 +1,13 @@
 import { Selector } from 'testcafe'
 
-import CrudPage from './CrudPage'
+import CreatePage from './CreatePage'
 
-class EditPage extends CrudPage {
+class EditPage extends CreatePage {
     constructor() {
         super()
 
-        this.title = Selector('#react-admin-title')
+        this.form = Selector('[data-test="edit-form"]')
+        this.inputs.id = Selector('[data-test="input-id"]')
     }
 }
 
