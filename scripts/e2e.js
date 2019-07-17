@@ -14,11 +14,35 @@ process.on('unhandledRejection', err => {
 
 // Ensure environment variables are read.
 const { join } = require('path');
+const { mkdirSync } = require('fs')
 require('dotenv').config({ path: join(__dirname, '../.env.test') });
 require('../config/env');
 const { execSync } = require('child_process');
 let argv = process.argv.slice(2);
 
-const testScript = `cd e2e && testcafe ${argv.join(' ')}`
+const screenshotsPath = join(__dirname, '../.tests/screenshots')
+
+try {
+    mkdirSync(join(__dirname, '../.tests'))
+    mkdirSync(screenshotsPath)
+} catch (e) {
+    console.log('>', '.tests directory already exists')
+}
+
+const screenshotArgs = [
+    '--screenshots',
+    screenshotsPath,
+    '--screenshots-on-fails'
+];
+
+const testScript = `cd e2e && testcafe ${[
+    ...argv,
+    ...screenshotArgs
+].join(' ')}`
 console .log('>', testScript)
-execSync(testScript, { stdio: 'inherit' });
+
+try {
+    execSync(testScript, { stdio: 'inherit' })
+} catch(e) {
+    console.log(e.name, e.message)
+}
