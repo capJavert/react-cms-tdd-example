@@ -16,7 +16,6 @@ script:
     - sleep 3
     - fluxbox > /dev/null 2>&1 &
     - npm run build -- --test
-    - npm run serve >/dev/null 2>&1 &
-    - wait-on http://localhost:4444
+    - npm run serve -- --no-json-server >/dev/null 2>&1 &
     - wait-on http://localhost:5000
     - CI=true npm run e2e
