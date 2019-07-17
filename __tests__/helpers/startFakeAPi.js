@@ -19,22 +19,22 @@ const startFakeApi = (port, customDb) =>
             server.use(middlewares)
             server.use(router)
 
-            const serverListener = server.listen(port, () => {
-                resolve(
-                    () =>
-                        new Promise((resolve2, reject2) => {
-                            try {
-                                serverListener.close(resolve2)
-                            } catch (e) {
-                                console.error(e)
-                                reject2()
-                            }
-                        })
-                )
-            })
+            const serverListener = server
+                .listen(port, () => {
+                    resolve(
+                        () =>
+                            new Promise((resolve2, reject2) => {
+                                try {
+                                    serverListener.close(resolve2).on('error', reject2)
+                                } catch (e) {
+                                    reject2(e)
+                                }
+                            })
+                    )
+                })
+                .on('error', reject)
         } catch (e) {
-            console.error(e)
-            reject()
+            reject(e)
         }
     })
 
