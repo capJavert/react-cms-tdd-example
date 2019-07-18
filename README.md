@@ -49,6 +49,8 @@ Executes e2e tests with testcafe. <br>
 Be sure to start dev server with `start` command or use `build -- --test` and `serve` commands for production code testing.<br>
 You can pass any option supported by [testcafe command](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html).
 
+**To learn more about tests and how to write them check `./TESTING.md` file.**
+
 ### Build
 
 ```
