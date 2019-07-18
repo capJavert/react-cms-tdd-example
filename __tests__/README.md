@@ -1,4 +1,4 @@
-# Integration tests
+# Integration/Unit tests
 
 Tests from this directory test specific usages or integrations of code across application. Unit tests do not belong here.
 
@@ -11,3 +11,11 @@ Unit tests should be placed next to the component/function/module/file that they
 > "Unit testing refers to tests that verify the functionality of a specific section of code, usually at the function level. In an object-oriented environment, this is usually at the class"
 
 Source: [Wikipedia: Software Testing](https://en.wikipedia.org/wiki/Software_testing#Integration_testing)
+
+# System testing
+
+> "System testing tests a completely integrated system to verify that the system meets its requirements."
+
+Source: [Wikipedia: Software Testing](https://en.wikipedia.org/wiki/Software_testing#Integration_testing)
+
+System testing for frontend application like CMS is done through E2E testing.
