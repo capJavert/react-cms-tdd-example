@@ -197,5 +197,16 @@ fixture`Articles/Edit`
 `page` method accepts URL of the page we would like this fixture to start on (open that page inside browser). Fixture class is created as `Builder` pattern which means every method returns an instance of fixture.<br>
 **Also all lifecycle hooks in testcafe are also async by default.**
 
+By default after each test inside fixture automator will reload the test page. This is to make sure that each test starts with fresh UI.<br>
+You sometimes want to chain few tests on the same page without page reload eg. test listing of items and select checkbox inside data table. To tell automator to skip reload `disablePageReloads` method:
+
+```js
+test.disablePageReloads(t => {
+    // test code
+})
+```
+
+`test` keyword is also created as `Builder` pattern so you can chain as many of those modifiers as you want.
+
 Configuration file for Jest is `./e2e/.testcaferc.json`. More about options can be found [here](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html).<br>
 **It is important to know that each option you pass through CLI command overrides the option set inside config file.**
